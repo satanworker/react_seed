@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'Avenir';
+  src: url('assets/fonts/AvenirLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('assets/fonts/AvenirRoman.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('assets/fonts/AvenirMedium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('assets/fonts/AvenirHeavy.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+
+html, body, #root, .root-child {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: #505150;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0;
+  overflow-x: hidden;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  color: #505150;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+/**************
+Grid styles
+***************/
+.container {
+  padding: 0;
+}
+
+/* HIGHCHARTS */
+
+/* .highcharts-root .highcharts-title{
+  display: none;
+}
+
+.highcharts-root .highcharts-range-selector-group{
+  display: none;
+} */
+
+.highcharts-credits {
+  display: none;
+}
+
+.highcharts-point {
+  fill: #60bf8d;
+}
+
+.highcharts-point.highcharts-negative {
+  fill: #ea7352;
+}
+
+.highcharts-plot-background {
+  fill: #fbfbfb;
+}
+
+/*DATE PICKER*/
+.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range {
+  background-color: #fbc836;
+}

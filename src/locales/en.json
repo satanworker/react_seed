@@ -1,0 +1,10 @@
+{
+  "inputs": {
+    "errors": {
+      "email": "Invalid Email",
+      "required": "Required field",
+      "match": "Values doesn't match",
+      "steps": "The amount of done and undone steps can not exceed the number of announced steps"
+    }
+  }
+}

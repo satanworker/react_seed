@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="25px" viewBox="0 0 24 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch -->
+    <title>search</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="Reviews" transform="translate(-1347.000000, -39.000000)" stroke="#787878">
+            <g id="header" transform="translate(61.000000, 31.000000)">
+                <g id="search" transform="translate(1287.000000, 9.000000)">
+                    <path d="M16,18 L22,24" id="Stroke-3"></path>
+                    <path d="M18.5920523,12.2626709 C17.408744,16.1620417 13.7856067,19 9.49970838,19 C4.25293919,19 0,14.746894 0,9.5 C0,4.25310598 4.25293919,0 9.49970838,0 C14.7464776,0 19,4.25310598 19,9.5 C19,10.4608937 18.8573424,11.3884571 18.5920523,12.2626709 Z" id="Stroke-5"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

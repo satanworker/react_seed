@@ -1,0 +1,84 @@
+version: '1.0'
+steps:
+  build_step:
+    type: build
+    title: Build getupgraded/online-payments_frontend
+    working_directory: ${{main_clone}}
+    dockerfile: dockerfiles/production
+    image_name: getupgraded/online-payments_frontend
+    tag: ${{CF_BRANCH_TAG_NORMALIZED}}
+    fail_fast: false
+
+  push_latest_tag_step:
+    type: push
+    title: Push getupgraded/online-payments_frontend
+    candidate: ${{build_step}}
+    tag: 'latest'
+    registry: ecr
+    fail_fast: false
+    when:
+      branch:
+        only:
+          - master
+          - develop
+
+  push_commit_tag_step:
+    type: push
+    title: Push getupgraded/online-payments_frontend
+    candidate: ${{build_step}}
+    tag: '${{CF_SHORT_REVISION}}'
+    registry: ecr
+    fail_fast: false
+    when:
+      branch:
+        only:
+          - master
+          - develop
+
+  deploy_k8s_staging_step:
+    title: Deploy getupgraded/online-payments_frontend
+    description: "[Staging] Deploy getupgraded/online-payments_frontend image to online-payments_frontend."
+    image: codefresh/cf-deploy-kubernetes:latest
+    commands:
+      - /cf-deploy-kubernetes kubernetes/online-payments_frontend-staging.yml.tmpl
+    environment:
+      - KUBERNETES_USER=${{KUBERNETES_USER}}
+      - KUBERNETES_PASSWORD=${{KUBERNETES_PASSWORD}}
+      - KUBERNETES_SERVER=${{KUBERNETES_SERVER}}
+      - KUBERNETES_NAMESPACE=staging
+    when:
+      branch:
+        only:
+          - develop
+
+
+  # deploy_k8s_production_step:
+  #   title: Deploy getupgraded/online-payments_frontend
+  #   description: "[Production] Deploy getupgraded/online-payments_frontend image to online-payments_frontend."
+  #   image: codefresh/cf-deploy-kubernetes:latest
+  #   commands:
+  #     - /cf-deploy-kubernetes kubernetes/online-payments_frontend.yml.tmpl
+  #   environment:
+  #     - KUBERNETES_USER=${{KUBERNETES_USER}}
+  #     - KUBERNETES_PASSWORD=${{KUBERNETES_PASSWORD}}
+  #     - KUBERNETES_SERVER=${{KUBERNETES_SERVER}}
+  #     - KUBERNETES_NAMESPACE=${{KUBERNETES_NAMESPACE}}
+  #   when:
+  #     branch:
+  #       only:
+  #         - master
+
+  slack_notification_step:
+    title: Notify deploy in Slack
+    description: Send a Slack notification to developers on deployment.
+    image: tutum/curl
+    commands:
+      - curl -X POST --data-urlencode 'payload={"text":"Finished production rollout of new release for `getupgraded/online-payments_frontend` (<https://github.com/getupgraded/online-payments_frontend/commit/${{CF_SHORT_REVISION}}|${{CF_SHORT_REVISION}}>) to `${{KUBERNETES_NAMESPACE}}.`"}' ${{SLACK_WEBHOOK_URL}}
+    environment:
+      - SLACK_WEBHOOK_URL=${{SLACK_WEBHOOK_URL}}
+      - CF_SHORT_REVISION=${{CF_SHORT_REVISION}}
+      - KUBERNETES_NAMESPACE=${{KUBERNETES_NAMESPACE}}
+    when:
+      branch:
+        only:
+          - master
