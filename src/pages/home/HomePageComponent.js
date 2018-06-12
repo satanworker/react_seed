@@ -1,10 +1,15 @@
 import React, { PureComponent } from 'react'
-import styled  from 'styled-components'
+import styled from 'styled-components'
+
+import ExampleComponent from 'src/modules/example/components/ExampleComponent'
 
 class HomePageComponent extends PureComponent {
   render () {
     return (
-      <Container> Here goes home page </Container>
+      <Container>
+        <h1>Here goes home page</h1>
+        <ExampleComponent />
+      </Container>
     )
   }
 }

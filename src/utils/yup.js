@@ -1,16 +1,15 @@
 import Yup from 'yup'
 
-function equalTo(ref, msg) {
+function equalTo (ref, msg) {
   return Yup.mixed().test({
     name: 'equalTo',
     exclusive: false,
-    message: msg || '${path} must be the same as ${reference}',
     params: {
-      reference: ref.path,
+      reference: ref.path
     },
-    test(value) {
+    test (value) {
       return value === this.resolve(ref)
-    },
+    }
   })
 }
 
