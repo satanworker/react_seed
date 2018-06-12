@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import styled  from 'styled-components'
 
 class HomePageComponent extends PureComponent {
-  render() {
+  render () {
     return (
       <Container> Here goes home page </Container>
     )

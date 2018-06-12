@@ -7,7 +7,7 @@ import { isUserLoggedIn } from 'src/store/user'
 import DefaultHeader from 'src/modules/navigation/header/containers/DefaultHeader'
 
 class UserLayout extends PureComponent {
-  render() {
+  render () {
     const { isUserLoggedIn } = this.props
 
     if (!isUserLoggedIn) {
@@ -36,4 +36,3 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserLayout)
-
